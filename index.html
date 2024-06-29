@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Siswa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Daftar Siswa</h1>
+    <input type="text" id="search-box" class="search-box" placeholder="Cari siswa...">
+    <div class="category-filter" id="category-filter">
+        <button data-category="all" class="category-button">Semua</button>
+        <button data-category="male" class="category-button">Laki-laki</button>
+        <button data-category="female" class="category-button">Perempuan</button>
+        <button data-category="12A" class="category-button">Kelas 12A</button>
+        <button data-category="11B" class="category-button">Kelas 11B</button>
+        <button data-category="12C" class="category-button">Kelas 12C</button>
+    </div>
+    <div id="student-list" class="student-list"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
