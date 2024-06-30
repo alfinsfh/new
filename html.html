@@ -1,0 +1,60 @@
+<div class="student-profile">
+    <div class="profile-header">
+        <img src="${student.foto}" alt="${student.nama}" class="profile-image">
+        <div class="prof-student">
+            <h2>${student.nama}</h2>
+            <p class="profile-met"><strong>Kelas:</strong> ${student.kelas}</p>
+            <p class="profile-met"><strong>Jurusan:</strong> ${student.jurusan}</p>
+
+        </div>
+    </div>
+    <div class="tabs">
+        <button class="tab-link active" onclick="openTab(event, 'Tab1')">Tab 1</button>
+        <button class="tab-link" onclick="openTab(event, 'Tab2')">Tab 2</button>
+        <button class="tab-link" onclick="openTab(event, 'Tab3')">Tab 3</button>
+    </div>
+
+    <div id="Tab1" class="tab-content" style="display: block;">
+        <div class="studentp">
+            <p class="profile-met"><strong>Tanggal Lahir:</strong> ${student.tanggal_lahir}</p>
+            <p class="profile-meta"><strong>Umur:</strong> ${age} tahun</p>
+            <p class="profile-meta"><strong>Zodiak:</strong> ${zodiac}</p>
+            <p class="profile-meta"><strong>Gender:</strong> ${student.gender}</p>
+            <p class="profile-meta"><strong>Quote:</strong> "${student.quote}"</p>
+        </div>
+    </div>
+</div>
+<div id="Tab2" class="tab-content">
+    <h3>Prestasi</h3>
+    <ul class="achievements">
+        ${student.prestasi.map(p => `<li>${p.judul} (${p.tahun})</li>`).join('')}
+    </ul>
+    <h3>Kegiatan</h3>
+    <ul class="activities">
+        ${student.kegiatan.map(k => `<li>${k}</li>`).join('')}
+    </ul>
+    <h3>Extra</h3>
+    <div class="extra-icons">
+        ${renderExtraIcons(student.extra)}
+    </div>
+</div>
+<div id="Tab3" class="tab-content">
+    <h3>Alamat</h3>
+    <p>${student.alamat.jalan}, ${student.alamat.kota}, ${student.alamat.provinsi}, ${student.alamat.kode_pos}</p>
+    <h3>Kontak</h3>
+    <p><strong>Nomor Telepon:</strong> ${student.nomor_telepon}</p>
+    <p><strong>Email:</strong> ${student.email}</p>
+    <h3>Deskripsi</h3>
+    <p>${student.deskripsi}</p>
+    
+    <h3>Teman</h3>
+    <div class="friends-list">
+        ${renderFriends(data.students, student.teman)}
+    </div>
+</div>
+
+
+<div class="profile-details">
+    
+</div>
+</div>

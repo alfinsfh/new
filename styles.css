@@ -1,11 +1,22 @@
 /* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
     background-color: #f0f2f5;
     margin: 0;
-    padding: 10px;
     color: #333;
 }
+
+:root {
+    --color: #ffffff;
+    --color1: #e9ecef;
+    --color2: #ccc;
+    --color3: #ddd;
+    --color4: #ccc;
+    --tab-padding: 14px 16px;
+    --tab-margin: 0 5px;
+}
+
 
 h1 {
     color: #444;
@@ -108,8 +119,8 @@ h1 {
     display: block;
     margin: 20px auto;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #e9ecef;
+    color: #000000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -123,23 +134,14 @@ h1 {
 }
 
 /* Student Details */
+
+
 .student-details {
-    background: #fff;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    background: var(--color);
     max-width: 100%;
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100vh;
 }
 
-.student-details img {
-    border-radius: 50%;
-    max-width: 100px;
-    height: auto;
-    display: block;
-    margin: 0 auto 10px;
-}
 
 .student-details p {
     font-size: 0.9em;
@@ -158,6 +160,178 @@ h1 {
     color: #444;
     font-size: 0.9em;
 }
+
+.profile-image {
+    margin-right: 20px;
+    width: 150px; /* Atur ukuran sesuai kebutuhan */
+    height: auto; /* Atur tinggi otomatis berdasarkan lebar */
+}
+
+.prof-student {
+    flex: 1; /* Membuat div teks menyesuaikan sisa ruang */
+}
+
+.profile-met {
+    margin: 5px 0;
+}
+
+.student-profile {
+    display: flex;
+    flex-direction: column;    
+    background-color: var(--color);
+}
+
+.profile-header {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 24px;
+}
+
+.profile-header img {
+    margin-right: 20px;
+    height: 100px; /* Atur tinggi otomatis berdasarkan lebar */
+    width: 100px;
+    object-fit: cover;
+    border-radius: 24px;
+}
+
+.profile-header h2 {
+    font-size: 20px;
+    margin: 0;
+    text-align: left;
+}
+
+.profile-meta {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.profile-details {
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.profile-details h3 {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.profile-details p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+ul.achievements,
+ul.activities {
+    margin: 10px 0 20px;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.achievements li,
+ul.activities li {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.extra {
+    padding: 0px 24px;
+}
+
+.extra-icons {
+    display: flex;
+    align-items: center;
+
+}
+
+.extra-icons img {
+    width: 30px;
+    height: auto;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.friends-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.friends-list img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+.tabs {
+    overflow: hidden;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+}
+
+.tab-link {
+    width: 100%;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 18px 16px;
+    transition: background-color 0.3s;
+    color: var(--color1);
+}
+
+.tab-link i{
+    font-size: 20px;
+}
+.tab-link:hover {
+    background-color: #ddd;
+}
+
+.tab-link.active {
+    border-bottom: 1px solid #000000;
+    color: #000000;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid var(--color);
+    border-top: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Mengatur tombol agar berada di tengah */
+    gap: 10px; /* Jarak antara tombol */
+    margin: 24px 0px;
+}
+
+.button-prof {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.follow-button {
+    background-color: black;
+    color: white;
+}
+
+.share-button {
+    background-color: var(--color1);
+    color: black;
+}
+
 
 /* Media Queries */
 @media (min-width: 600px) {
@@ -179,8 +353,7 @@ h1 {
     }
 
     .student-details {
-        padding: 20px;
-        max-width: 500px;
+
     }
 
     .student-details img {
