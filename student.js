@@ -13,84 +13,110 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Menampilkan informasi siswa utama
                 studentDetails.innerHTML = `
-                <div class="student-profile">
-                <button class="back-button" onclick="window.history.back()">Kembali</button>
-                <div class="profile-header">
-                    <img src="${student.foto}" alt="${student.nama}" class="profile-image">
-                    <div class="prof-student">
-                        <h2>${student.nama}</h2>
-                        <p class="profile-meta"><strong>Kelas:</strong> ${student.kelas}</p>
-                        <p class="profile-meta"><strong>Jurusan:</strong> ${student.jurusan}</p>
-                    </div>
-                </div>
-                <div class="extra">
-                
-
-                <p class="profile-meta"><strong></strong> "${student.quote}"</p>
-                <div class="extra-icons">
-                    ${renderExtraIcons(student.extra)}
-                </div><div class="button-container">
-    <button class="button-prof follow-button">Follow</button>
-    <button class="button-prof share-button">Bagikan</button>
+            <div class="student-profile">
+    <button class="back-button" onclick="window.history.back()">Kembali</button>
+    <div class="profile-header">
+        <img src="${student.foto}" alt="${student.nama}" class="profile-image">
+        <div class="prof-student">
+            <h2>${student.nama}</h2>
+            <p class="profile-meta"><strong>Kelas:</strong> ${student.kelas}</p>
+            <p class="profile-meta"><strong>Jurusan:</strong> ${student.jurusan}</p>
+        </div>
+    </div>
+     <div class="prof-agez">
+<p>${age} ${zodiac}</p>
 </div>
+    <div class="extra">
+
+        <p class="profile-bio">${student.quote}</p>
+        <div class="row-middle">
+            <span class="profile-location">
+                <i class="fas fa-map-marker-alt"></i>
+                ${student.alamat.jalan}, ${student.alamat.kota}, ${student.alamat.provinsi}, ${student.alamat.kode_pos}
+            </span>
+            <span class="profile-website">
+                <i class="fas fa-link"></i>
+                <a href="#">https://www.instagram.com/janedoe_</a>
+            </span>
+
+            <div class="extra-icons">
+                ${renderExtraIcons(student.extra)}
             </div>
-                <div class="tabs">
-                <button class="tab-link active" onclick="openTab(event, 'Tab1')"><i class="fas fa-user"></i></button>
-                <button class="tab-link" onclick="openTab(event, 'Tab2')"><i class="fas fa-trophy"></i></button>
-                <button class="tab-link" onclick="openTab(event, 'Tab3')"><i class="fas fa-address-book"></i></button>
-                
-                </div>
-            
-                <div id="Tab1" class="tab-content" style="display: block;">
-                    <div class="personal-data">
-                        <div class="basic-info">
-                            <h3>Informasi Dasar</h3>
-                            <p class="profile-meta"><strong>Tanggal Lahir:</strong> ${student.tanggal_lahir}</p>
-                            <p class="profile-meta"><strong>Umur:</strong> ${age} tahun</p>
-                            <p class="profile-meta"><strong>Zodiak:</strong> ${zodiac}</p>
-                            <p class="profile-meta"><strong>Gender:</strong> ${student.gender}</p>
-                            
-                        </div>
-                    </div>
-                </div>
-            
-                <div id="Tab2" class="tab-content">
-                    <div class="achievements">
-                        <h3>Prestasi</h3>
-                        <ul class="achievements-list">
-                            ${student.prestasi.map(p => `<li>${p.judul} (${p.tahun})</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div class="activities">
-                        <h3>Kegiatan</h3>
-                        <ul class="activities-list">
-                            ${student.kegiatan.map(k => `<li>${k}</li>`).join('')}
-                        </ul>
-                    </div>
-                    
-                </div>
-            
-                <div id="Tab3" class="tab-content">
-                    <div class="contact-info">
-                        <h3>Alamat</h3>
-                        <p>${student.alamat.jalan}, ${student.alamat.kota}, ${student.alamat.provinsi}, ${student.alamat.kode_pos}</p>
-                        <h3>Kontak</h3>
-                        <p><strong>Nomor Telepon:</strong> ${student.nomor_telepon}</p>
-                        <p><strong>Email:</strong> ${student.email}</p>
-                    </div>
-                    <div class="description">
-                        <h3>Deskripsi</h3>
-                        <p>${student.deskripsi}</p>
-                    </div>
-                    <div class="friends">
-                        <h3>Teman</h3>
-                        <div class="friends-list">
-                            ${renderFriends(data.students, student.teman)}
-                        </div>
-                    </div>
+            <div class="row-bottom">
+                <span class="followers-count">
+                    Followers
+                    <span class="count-meta">10K</span>
+                </span>
+                <span class="following-count">
+                    Following
+                    <span class="count-meta">6K</span>
+
+                </span>
+                <span class="likes-count">
+                    Likes
+                    <span class="count-meta">512</span>
+                </span>
+            </div>
+            <div class="button-container">
+                <button class="button-prof follow-button">Follow</button>
+                <button class="button-prof share-button">Bagikan</button>
+            </div>
+        </div>
+        <div class="tabs">
+            <button class="tab-link active" onclick="openTab(event, 'Tab1')"><i class="fas fa-user"></i></button>
+            <button class="tab-link" onclick="openTab(event, 'Tab2')"><i class="fas fa-trophy"></i></button>
+            <button class="tab-link" onclick="openTab(event, 'Tab3')"><i class="fas fa-address-book"></i></button>
+
+        </div>
+
+        <div id="Tab1" class="tab-content" style="display: block;">
+            <div class="personal-data">
+                <div class="basic-info">
+                    <h3>Informasi Dasar</h3>
+                    <p class="profile-meta"><strong>Tanggal Lahir:</strong> ${student.tanggal_lahir}</p>
+                    <p class="profile-meta"><strong>Umur:</strong> ${age} tahun</p>
+                    <p class="profile-meta"><strong>Zodiak:</strong> ${zodiac}</p>
+                    <p class="profile-meta"><strong>Gender:</strong> ${student.gender}</p>
+
                 </div>
             </div>
-            
+        </div>
+
+        <div id="Tab2" class="tab-content">
+            <div class="achievements">
+                <h3>Prestasi</h3>
+                <ul class="achievements-list">
+                    ${student.prestasi.map(p => `<li>${p.judul} (${p.tahun})</li>`).join('')}
+                </ul>
+            </div>
+            <div class="activities">
+                <h3>Kegiatan</h3>
+                <ul class="activities-list">
+                    ${student.kegiatan.map(k => `<li>${k}</li>`).join('')}
+                </ul>
+            </div>
+
+        </div>
+
+        <div id="Tab3" class="tab-content">
+            <div class="contact-info">
+
+                <h3>Kontak</h3>
+                <p><strong>Nomor Telepon:</strong> ${student.nomor_telepon}</p>
+                <p><strong>Email:</strong> ${student.email}</p>
+            </div>
+            <div class="description">
+                <h3>Deskripsi</h3>
+                <p>${student.deskripsi}</p>
+            </div>
+            <div class="friends">
+                <h3>Teman</h3>
+                <div class="friends-list">
+                    ${renderFriends(data.students, student.teman)}
+                </div>
+            </div>
+        </div>
+    </div>
                 `;
             } else {
                 studentDetails.innerHTML = '<p>Siswa tidak ditemukan</p>';

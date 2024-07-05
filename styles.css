@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body {
     font-family: "Poppins", sans-serif;
-    background-color: #f0f2f5;
+    background-color: var(--color);
     margin: 0;
-    color: #333;
+    color: #ffffff;
 }
 
 :root {
-    --color: #ffffff;
-    --color1: #e9ecef;
-    --color2: #ccc;
+    --color: #000000;
+    --color1: #161618;
+    --color2: #818181;
     --color3: #ddd;
     --color4: #ccc;
     --tab-padding: 14px 16px;
@@ -19,7 +19,7 @@ body {
 
 
 h1 {
-    color: #444;
+    color: var(--color2);
     text-align: center;
     margin-bottom: 20px;
     font-size: 2em;
@@ -30,7 +30,7 @@ h1 {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color1);
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 1em;
@@ -49,7 +49,7 @@ h1 {
 .category-button {
     padding: 10px 15px;
     background-color: #007bff;
-    color: white;
+    color: var(--color2);
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -72,19 +72,22 @@ h1 {
     flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
+    width: 100%;
 }
 
 /* Student Card */
 .student-card {
-    background: #fff;
+    background: var(--color1);
     border: 1px solid #ccc;
+    color: var(--color2);
+    text-decoration: none;
     border-radius: 10px;
     padding: 15px;
     width: 100%;
-    max-width: 300px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+
 }
 
 .student-card:hover {
@@ -119,8 +122,8 @@ h1 {
     display: block;
     margin: 20px auto;
     padding: 10px 20px;
-    background-color: #e9ecef;
-    color: #000000;
+    background-color: var(--color1);
+    color: var(--color2);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -130,7 +133,7 @@ h1 {
 }
 
 .back-button:hover {
-    background-color: #0056b3;
+
 }
 
 /* Student Details */
@@ -138,15 +141,16 @@ h1 {
 
 .student-details {
     background: var(--color);
-    max-width: 100%;
+    width: 100%;
     height: 100vh;
+    max-width: 460px;
 }
 
 
 .student-details p {
     font-size: 0.9em;
     margin: 10px 0;
-    color: #444;
+    color: var(--color2);
 }
 
 .student-details ul {
@@ -157,7 +161,7 @@ h1 {
 
 .student-details li {
     margin: 10px 0;
-    color: #444;
+    color: var(--color2);
     font-size: 0.9em;
 }
 
@@ -167,12 +171,31 @@ h1 {
     height: auto; /* Atur tinggi otomatis berdasarkan lebar */
 }
 
+
+
+
 .prof-student {
     flex: 1; /* Membuat div teks menyesuaikan sisa ruang */
 }
 
 .profile-met {
     margin: 5px 0;
+}
+
+.prof-agez p{ 
+    margin-bottom: -23rem;
+    background-color: white;
+    color: var(--color);
+    display: inline-block;
+    padding: 5px 20px;
+    border: 2px solid var(--color);
+    border-radius: 50px;
+    position: absolute;
+    z-index: 2;
+    margin-left: 35px;
+    margin-top: -50px;
+    font-size: 10px;
+
 }
 
 .student-profile {
@@ -194,8 +217,9 @@ h1 {
     height: 100px; /* Atur tinggi otomatis berdasarkan lebar */
     width: 100px;
     object-fit: cover;
-    border-radius: 24px;
+    border-radius: 50px;
 }
+
 
 .profile-header h2 {
     font-size: 20px;
@@ -270,10 +294,10 @@ ul.activities li {
 
 .tabs {
     overflow: hidden;
-    background-color: #ffffff;
-    border-bottom: 1px solid #ccc;
+    background-color: var(--color);
     display: flex;
     justify-content: center;
+    border-bottom: 1px solid var(--color1)
 }
 
 .tab-link {
@@ -291,12 +315,12 @@ ul.activities li {
     font-size: 20px;
 }
 .tab-link:hover {
-    background-color: #ddd;
+    color: #ffffff;
 }
 
 .tab-link.active {
-    border-bottom: 1px solid #000000;
-    color: #000000;
+    border-bottom: 1px solid #fafafafa;
+    color: #fafafafa;
 }
 
 .tab-content {
@@ -307,10 +331,16 @@ ul.activities li {
 }
 
 .button-container {
+    font-family: "Poppins", sans-serif;
     display: flex;
     justify-content: center; /* Mengatur tombol agar berada di tengah */
     gap: 10px; /* Jarak antara tombol */
     margin: 24px 0px;
+    font-weight: 600;
+}
+
+button {
+    font-family: "Poppins", sans-serif;
 }
 
 .button-prof {
@@ -323,13 +353,13 @@ ul.activities li {
 }
 
 .follow-button {
-    background-color: black;
+    background-color: var(--color1);
     color: white;
 }
 
 .share-button {
     background-color: var(--color1);
-    color: black;
+    color: white;
 }
 
 

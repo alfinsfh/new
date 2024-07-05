@@ -1,0 +1,125 @@
+/* Inspired by Steve Schoger's Design tips
+
+ - https://www.refactoringui.com
+
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+:root {
+    --black: black;
+    --white: #fff;
+    --grey: hsl(214, 7%, 47%);
+    --light-grey: #eee;
+    --twitter-blue: #0084b4;
+    --font-large:15px;
+    --font-small: 12px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Gradient from https://uigradients.com */
+    background: #282828;
+}
+
+.twitter-card {
+    border: 1px solid var(--light-grey);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+
+.user {
+    font-size: var(--font-large);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.username {
+    font-size: var(--font-small);
+    color: var(--grey);
+}
+
+.profile-bio {
+
+    margin-bottom: 1rem;
+}
+
+.row-middle {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-location {
+    font-size: var(--font-small);
+    color: white;
+    margin-bottom: 10px;
+}
+
+.profile-location>i,
+.profile-website>i {
+    font-size: 1rem;
+    color: var(--grey);
+    margin-right: 5px;
+}
+
+.profile-website>i {
+    margin-right: 2px;
+}
+
+.profile-website {
+    margin-bottom: 1.2rem;
+}
+
+.profile-website>a {
+    text-decoration: none;
+    font-size: var(--font-small);
+    color: var(--twitter-blue);
+}
+
+.row-bottom {
+    padding: 0rem 0rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.row-bottom>*:not(:first-child) {
+    border-left: 1px solid #161618;
+}
+
+.followers-count,
+.following-count,
+.likes-count {
+    color: white;
+    width: 100%;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.count-meta {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 5px;
+    color: white;
+}
