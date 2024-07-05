@@ -14,7 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Menampilkan informasi siswa utama
                 studentDetails.innerHTML = `
             <div class="student-profile">
-    <button class="back-button" onclick="window.history.back()">Kembali</button>
+            <div class="prof-grad">
+             <div class="header-detail-prof">
+        <button class="header-button" onclick="window.history.back()"><i class="fas fa-arrow-left"></i></button>
+        <span class="header-text">Detail</span>
+        <button class="header-button"><i class="fas fa-share"></i></button>
+    </div>
+</div>
+    
     <div class="profile-header">
         <img src="${student.foto}" alt="${student.nama}" class="profile-image">
         <div class="prof-student">
