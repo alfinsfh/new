@@ -1,4 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Friend Bubbles</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
 
-<div class="prof-grad">
+        .bubble-container {
+            position: relative;
+            width: 80%;
+            height: 80vh;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
 
-</div>
+        .bubble {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: white;
+            font-size: 24px;
+            user-select: none;
+            cursor: grab;
+        }
+
+        .bubble:active {
+            cursor: grabbing;
+        }
+    </style>
+</head>
+<body>
+    <div class="bubble-container">
+        <div class="bubble" data-name="Alice" style="top: 10%; left: 10%;">A</div>
+        <div class="bubble" data-name="Bob" style="top: 20%; left: 20%;">B</div>
+        <div class="bubble" data-name="Charlie" style="top: 30%; left: 30%;">C</div>
+    </div>
+    <script>
+        class Bubble {
+            constructor(element, bubbles) {
+                this.element = element;
+                this.bubbles = bubbles;
+                this.container = element.parentElement;
+                this.velocity = { x: 0, y: 0 };
+                this.isDragging = false;
+                this.gravity = 0.1; // Gravity effect
+                this.friction = 0.98; // Friction effect
+                this.init();
+            }
+
+            init() {
+                this.element.style.left = `${this.element.offsetLeft}px`;
+                this.element.style.top = `${this.element.offsetTop}px`;
+                this.element.addEventListener('mousedown', this.startDrag.bind(this));
+                this.element.addEventListener('touchstart', this.startDrag.bind(this));
+                requestAnimationFrame(this.update.bind(this));
+            }
+
+            startDrag(event) {
+                event.preventDefault();
+                this.isDragging = true;
+                this.startX = event.clientX || event.touches[0].clientX;
+                this.startY = event.clientY || event.touches[0].clientY;
+                this.element.style.transition = 'none';
+
+                document.addEventListener('mousemove', this.drag.bind(this));
+                document.addEventListener('touchmove', this.drag.bind(this));
+                document.addEventListener('mouseup', this.endDrag.bind(this));
+                document.addEventListener('touchend', this.endDrag.bind(this));
+            }
+
+            drag(event) {
+                if (!this.isDragging) return;
+
+                const clientX = event.clientX || event.touches[0].clientX;
+                const clientY = event.clientY || event.touches[0].clientY;
+
+                const dx = clientX - this.startX;
+                const dy = clientY - this.startY;
+
+                this.element.style.left = `${this.element.offsetLeft + dx}px`;
+                this.element.style.top = `${this.element.offsetTop + dy}px`;
+
+                this.startX = clientX;
+                this.startY = clientY;
+            }
+
+            endDrag() {
+                this.isDragging = false;
+                this.element.style.transition = 'transform 0.2s';
+
+                document.removeEventListener('mousemove', this.drag.bind(this));
+                document.removeEventListener('touchmove', this.drag.bind(this));
+                document.removeEventListener('mouseup', this.endDrag.bind(this));
+                document.removeEventListener('touchend', this.endDrag.bind(this));
+
+                // Set random velocity after dragging
+                this.velocity.x = (Math.random() * 2 + 1) * (Math.random() < 0.5 ? 1 : -1);
+                this.velocity.y = (Math.random() * 2 + 1) * (Math.random() < 0.5 ? 1 : -1);
+            }
+
+            update() {
+                if (!this.isDragging) {
+                    let rect = this.element.getBoundingClientRect();
+                    let containerRect = this.container.getBoundingClientRect();
+
+                    // Apply friction
+                    this.velocity.x *= this.friction;
+                    this.velocity.y *= this.friction;
+
+                    // Apply gravity
+                    this.velocity.y += this.gravity;
+
+                    // Check for collision with container borders and reverse direction if necessary
+                    if (rect.right >= containerRect.right || rect.left <= containerRect.left) {
+                        this.velocity.x = -this.velocity.x;
+                    }
+                    if (rect.bottom >= containerRect.bottom) {
+                        this.velocity.y = -this.velocity.y * this.friction; // Reverse and apply friction
+                        this.element.style.top = `${containerRect.height - rect.height}px`; // Prevent getting stuck
+                    }
+
+                    if (rect.top <= containerRect.top) {
+                        this.velocity.y = -this.velocity.y;
+                    }
+
+                    let left = parseFloat(this.element.style.left) + this.velocity.x;
+                    let top = parseFloat(this.element.style.top) + this.velocity.y;
+
+                    this.element.style.left = `${left}px`;
+                    this.element.style.top = `${top}px`;
+
+                    // Detect collision with other bubbles
+                    this.detectCollision();
+                }
+                requestAnimationFrame(this.update.bind(this));
+            }
+
+            detectCollision() {
+                const rect1 = this.element.getBoundingClientRect();
+                this.bubbles.forEach(bubble => {
+                    if (bubble.element !== this.element) {
+                        const rect2 = bubble.element.getBoundingClientRect();
+
+                        const dx = rect1.left + rect1.width / 2 - (rect2.left + rect2.width / 2);
+                        const dy = rect1.top + rect1.height / 2 - (rect2.top + rect2.height / 2);
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        const minDistance = rect1.width / 2 + rect2.width / 2;
+
+                        if (distance < minDistance) {
+                            const angle = Math.atan2(dy, dx);
+                            const tx = rect2.left + Math.cos(angle) * minDistance;
+                            const ty = rect2.top + Math.sin(angle) * minDistance;
+
+                            const ax = (tx - rect1.left) * 0.1; // Reduce the bounce effect
+                            const ay = (ty - rect1.top) * 0.1; // Reduce the bounce effect
+
+                            this.velocity.x -= ax;
+                            this.velocity.y -= ay;
+                            bubble.velocity.x += ax;
+                            bubble.velocity.y += ay;
+                        }
+                    }
+                });
+            }
+        }
+
+        const bubbles = Array.from(document.querySelectorAll('.bubble')).map(bubbleElement => new Bubble(bubbleElement, []));
+        bubbles.forEach(bubble => bubble.bubbles = bubbles);
+    </script>
+</body>
+</html>
