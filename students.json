@@ -2,7 +2,7 @@
     "students": [
         {
             "id": 1,
-            "teman": [2, 3] ,
+            "teman": [2, 3, 4, 5] ,
             "nama": "Serly Agustian",
             "kelas": "12A",
             "jurusan": "IPA",

@@ -126,6 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3>Deskripsi</h3>
                 <p>${student.deskripsi}</p>
             </div>
+
+            
             <div class="friends">
                 <h3>Teman</h3>
                 <div class="friends-list">
@@ -169,6 +171,8 @@ function renderFriends(students, friendsIds) {
         const friend = students.find(s => s.id === friendId);
         if (friend) {
             return `
+
+            
                 <div class="friend-card" onclick="navigateToStudent(${friend.id})">
                     <img src="${friend.foto}" alt="${friend.nama}">
                     <p>${friend.nama}</p>

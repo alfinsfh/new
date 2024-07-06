@@ -10,8 +10,8 @@ body {
 :root {
     --color: #000000;
     --color1: #161618;
-    --color2: #818181;
-    --color3: #ddd;
+    --color2: #919191;
+    --color3: #242427;
     --color4: #ccc;
     --tab-padding: 14px 16px;
     --tab-margin: 0 5px;
@@ -420,7 +420,7 @@ ul.activities li {
 
 .friends-list {
     display: flex;
-    flex-wrap: wrap;
+    overflow-x: scroll;
 }
 
 .friends-list img {
@@ -436,7 +436,7 @@ ul.activities li {
     background-color: var(--color);
     display: flex;
     justify-content: center;
-    border: 1px solid var(--color1);
+    border: 1px solid var(--color3);
     border-radius: 50px;
 }
 
@@ -504,6 +504,59 @@ button {
     color: white;
 }
 
+.friend-card {
+    width: 100%;
+    width: 200rem;
+    padding: 20px;
+    margin: 8px;
+    background: var(--color1);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    backdrop-filter: blur(10px);
+    transition: 0.5s ease-in-out;
+  }
+  
+
+  .friends-list::-webkit-scrollbar {
+    width: 10px; /* Lebar scrollbar */
+    background-color: var(--color1);
+}
+
+.friend-list::-webkit-scrollbar-thumb {
+    background-color: #888; /* Warna latar belakang thumb */
+    border-radius: 5px; /* Border radius thumb */
+}
+
+  
+
+  
+  .friend-card .textBox {
+
+
+    color: white;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .friend-card .textContent {
+
+  }
+  
+  .friend-card .span {
+    font-size: 10px;
+  }
+  
+  .friend-card .h1 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .friend-card .p {
+    font-size: 12px;
+    font-weight: lighter;
+  }
+  
 
 /* Media Queries */
 @media (min-width: 600px) {
