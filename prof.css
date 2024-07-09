@@ -71,7 +71,6 @@ body {
 .profile-location {
     font-size: var(--font-small);
     color: white;
-    margin-bottom: 10px;
 }
 
 .profile-location>i,
@@ -79,6 +78,7 @@ body {
     font-size: 1rem;
     color: var(--grey);
     margin-right: 5px;
+    margin-bottom: 8px;
 }
 
 .profile-website>i {
@@ -86,7 +86,6 @@ body {
 }
 
 .profile-website {
-    margin-bottom: 1.2rem;
 }
 
 .profile-website>a {

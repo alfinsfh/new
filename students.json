@@ -160,6 +160,51 @@
                 "Anggota Teater"
             ],
             "deskripsi": "Siti adalah siswi yang gemar membaca dan aktif dalam kegiatan seni serta sosial di sekolah."
-        }
+        },
+        {
+            "id": 5,
+            "teman": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "nama": "adkada",
+            "kelas": "adad",
+            "jurusan": "adad",
+            "foto": "dadad",
+            "tanggal_lahir": "1212-02-11",
+            "gender": "Perempuan",
+            "quote": "12313",
+            "alamat": {
+              "jalan": "aaadad",
+              "kota": "dada",
+              "provinsi": "dada",
+              "kode_pos": "dada"
+            },
+            "extra": {
+              "angkatan": true,
+              "sekolah": true,
+              "osis": true,
+              "pramuka": true,
+              "pmr": false
+            },
+            "nomor_telepon": "1132",
+            "email": "afsa@gmai.com",
+            "prestasi": [
+              {
+                "judul": "aczca",
+                "tahun": 1231
+              },
+              {
+                "judul": "12131",
+                "tahun": 2222
+              }
+            ],
+            "kegiatan": [
+              "1324eewfq"
+            ],
+            "deskripsi": "qeqewq"
+          }
     ]
 }

@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Siswa</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-<div class="container-index">
+    <div class="container-index">
+
+        <div class="li" style="display: none;">
+            <ul>
+                <li><b>5</b> Test</li>
+                <li><b>10</b> Test2</li>
+                <li><b>8</b> Test3</li>
+            </ul>
+        </div>
 
 
-    <div class="group">
-        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-        <input placeholder="Search" type="search" id="search-box" class="input">
-      </div>
 
-    <div class="category-filter" id="category-filter">
-        <button data-category="all" class="category-button">Semua</button>
-        <button data-category="male" class="category-button">Laki-laki</button>
-        <button data-category="female" class="category-button">Perempuan</button>
-        <button data-category="12A" class="category-button">Kelas 12A</button>
-        <button data-category="11B" class="category-button">Kelas 11B</button>
-        <button data-category="12C" class="category-button">Kelas 12C</button>
+        <div class="group">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+                <g>
+                    <path
+                        d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                    </path>
+                </g>
+            </svg>
+            <input placeholder="Search" type="search" id="search-box" class="input">
+        </div>
+
+        <div class="category-filter" id="category-filter">
+            <button data-category="all" class="category-button">Semua</button>
+            <button data-category="male" class="category-button">Laki-laki</button>
+            <button data-category="female" class="category-button">Perempuan</button>
+            <button data-category="12A" class="category-button">Kelas 12A</button>
+            <button data-category="11B" class="category-button">Kelas 11B</button>
+            <button data-category="12C" class="category-button">Kelas 12C</button>
+        </div>
+        <div id="student-list" class="student-list"></div>
     </div>
-    <div id="student-list" class="student-list"></div>
-</div>
     <script src="script.js"></script>
 </body>
+
 </html>

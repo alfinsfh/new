@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.innerHTML = `
                         <img src="${student.foto}" alt="${student.nama}">
                         <h3>${student.nama}</h3>
-                        <p>${student.kelas}</p>
                     `;
                     studentList.appendChild(card);
                 });

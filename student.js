@@ -14,25 +14,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Menampilkan informasi siswa utama
                 studentDetails.innerHTML = `
             <div class="student-profile">
-            <div class="prof-grad">
-             <div class="header-detail-prof">
-        <button class="header-button" onclick="window.history.back()"><i class="fas fa-arrow-left"></i></button>
-        <span class="header-text">Detail</span>
-        <button class="header-button"><i class="fas fa-share"></i></button>
+    <div class="prof-grad">
+        <div class="header-detail-prof">
+            <button class="header-button" onclick="window.history.back()"><i class="fas fa-arrow-left"></i></button>
+            <span class="header-text">Detail</span>
+            <button class="header-button"><i class="fas fa-share"></i></button>
+        </div>
     </div>
-</div>
-    
+
     <div class="profile-header">
         <img src="${student.foto}" alt="${student.nama}" class="profile-image">
         <div class="prof-student">
             <h2>${student.nama}</h2>
-            <p class="profile-meta"><strong>Kelas:</strong> ${student.kelas}</p>
-            <p class="profile-meta"><strong>Jurusan:</strong> ${student.jurusan}</p>
+            <p class="profile-meta"><strong></strong> ${student.kelas} ${student.jurusan}</p>
         </div>
     </div>
-     <div class="prof-agez">
-<p>${age} ${zodiac}</p>
-</div>
+    <div class="prof-agez">
+        <p>${age} ${zodiac}</p>
+    </div>
+
+
     <div class="extra">
 
         <p class="profile-bio">${student.quote}</p>
@@ -45,11 +46,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 <i class="fas fa-link"></i>
                 <a href="#">https://www.instagram.com/janedoe_</a>
             </span>
-
+            <div class="li">
+                <ul>
+                    <li><b>5</b> Test</li>
+                    <li><b>10</b> Test2</li>
+                    <li><b>8</b> Test3</li>
+                </ul>
+            </div>
+            
+            <div class="title-section">
+            <h1>Extra</h1>
+        </div>        
             <div class="extra-icons">
                 ${renderExtraIcons(student.extra)}
             </div>
-            <div class="row-bottom">
+            <div class="row-bottom" style="display: none;">
                 <span class="followers-count">
                     Followers
                     <span class="count-meta">10K</span>
@@ -84,7 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="profile-meta"><strong>Umur:</strong> ${age} tahun</p>
                     <p class="profile-meta"><strong>Zodiak:</strong> ${zodiac}</p>
                     <p class="profile-meta"><strong>Gender:</strong> ${student.gender}</p>
-
+ <div class="friends">
+                <h3>Teman</h3>
+                <div class="friends-list">
+                    ${renderFriends(data.students, student.teman)}
+                </div>
+            </div>
                 </div>
             </div>
         </div>
@@ -107,17 +123,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div id="Tab3" class="tab-content">
             <div class="contact-info">
-<div class="card">
-<div class="card-name">Quote of the month</div>
-<div class="quote">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307" height="80" width="80">
-    <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
-  </svg>
-</div>
-<div class="body-text">${student.deskripsi}</div>
-<div class="author">- by Virgil <br> <span>(Latin poet)</span>   <svg height="" width="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H24V24H0z" fill="none"></path><path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path></svg>
-</div>
-</div>
+                <div class="card">
+                    <div class="card-name">Quote of the month</div>
+                    <div class="quote">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307" height="80"
+                            width="80">
+                            <path fill="currentColor"
+                                d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="body-text">${student.deskripsi}</div>
+                    <div class="author">- by Virgil <br> <span>(Latin poet)</span> <svg height="" width="18"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0H24V24H0z" fill="none"></path>
+                            <path
+                                d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
                 <h3>Kontak</h3>
                 <p><strong>Nomor Telepon:</strong> ${student.nomor_telepon}</p>
                 <p><strong>Email:</strong> ${student.email}</p>
@@ -127,13 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>${student.deskripsi}</p>
             </div>
 
+
             
-            <div class="friends">
-                <h3>Teman</h3>
-                <div class="friends-list">
-                    ${renderFriends(data.students, student.teman)}
-                </div>
-            </div>
         </div>
     </div>
                 `;

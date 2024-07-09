@@ -1,185 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Friend Bubbles</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-
-        .bubble-container {
-            position: relative;
-            width: 80%;
-            height: 80vh;
-            border: 1px solid #ccc;
-            overflow: hidden;
-        }
-
-        .bubble {
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #007bff;
-            color: white;
-            font-size: 24px;
-            user-select: none;
-            cursor: grab;
-        }
-
-        .bubble:active {
-            cursor: grabbing;
-        }
-    </style>
-</head>
-<body>
-    <div class="bubble-container">
-        <div class="bubble" data-name="Alice" style="top: 10%; left: 10%;">A</div>
-        <div class="bubble" data-name="Bob" style="top: 20%; left: 20%;">B</div>
-        <div class="bubble" data-name="Charlie" style="top: 30%; left: 30%;">C</div>
+<div class="student-profile">
+    <div class="prof-grad">
+        <div class="header-detail-prof">
+            <button class="header-button" onclick="window.history.back()"><i class="fas fa-arrow-left"></i></button>
+            <span class="header-text">Detail</span>
+            <button class="header-button"><i class="fas fa-share"></i></button>
+        </div>
     </div>
-    <script>
-        class Bubble {
-            constructor(element, bubbles) {
-                this.element = element;
-                this.bubbles = bubbles;
-                this.container = element.parentElement;
-                this.velocity = { x: 0, y: 0 };
-                this.isDragging = false;
-                this.gravity = 0.1; // Gravity effect
-                this.friction = 0.98; // Friction effect
-                this.init();
-            }
 
-            init() {
-                this.element.style.left = `${this.element.offsetLeft}px`;
-                this.element.style.top = `${this.element.offsetTop}px`;
-                this.element.addEventListener('mousedown', this.startDrag.bind(this));
-                this.element.addEventListener('touchstart', this.startDrag.bind(this));
-                requestAnimationFrame(this.update.bind(this));
-            }
+    <div class="profile-header">
+        <img src="${student.foto}" alt="${student.nama}" class="profile-image">
+        <div class="prof-student">
+            <h2>${student.nama}</h2>
+            <p class="profile-meta"><strong></strong> ${student.kelas} ${student.jurusan}</p>
+        </div>
+    </div>
+    <div class="prof-agez">
+        <p>${age} ${zodiac}</p>
+    </div>
 
-            startDrag(event) {
-                event.preventDefault();
-                this.isDragging = true;
-                this.startX = event.clientX || event.touches[0].clientX;
-                this.startY = event.clientY || event.touches[0].clientY;
-                this.element.style.transition = 'none';
 
-                document.addEventListener('mousemove', this.drag.bind(this));
-                document.addEventListener('touchmove', this.drag.bind(this));
-                document.addEventListener('mouseup', this.endDrag.bind(this));
-                document.addEventListener('touchend', this.endDrag.bind(this));
-            }
+    <div class="extra">
 
-            drag(event) {
-                if (!this.isDragging) return;
+        <p class="profile-bio">${student.quote}</p>
+        <div class="row-middle">
+            <span class="profile-location">
+                <i class="fas fa-map-marker-alt"></i>
+                ${student.alamat.jalan}, ${student.alamat.kota}, ${student.alamat.provinsi}, ${student.alamat.kode_pos}
+            </span>
+            <span class="profile-website">
+                <i class="fas fa-link"></i>
+                <a href="#">https://www.instagram.com/janedoe_</a>
+            </span>
+            <div class="li">
+                <ul>
+                    <li><b>5</b> Test</li>
+                    <li><b>10</b> Test2</li>
+                    <li><b>8</b> Test3</li>
+                </ul>
+            </div>
+            <div class="extra-icons">
+                ${renderExtraIcons(student.extra)}
+            </div>
+            <div class="row-bottom" style="display: none;">
+                <span class="followers-count">
+                    Followers
+                    <span class="count-meta">10K</span>
+                </span>
+                <span class="following-count">
+                    Following
+                    <span class="count-meta">6K</span>
 
-                const clientX = event.clientX || event.touches[0].clientX;
-                const clientY = event.clientY || event.touches[0].clientY;
+                </span>
+                <span class="likes-count">
+                    Likes
+                    <span class="count-meta">512</span>
+                </span>
+            </div>
+            <div class="button-container">
+                <button class="button-prof follow-button">Follow</button>
+                <button class="button-prof share-button">Bagikan</button>
+            </div>
+        </div>
+        <div class="tabs">
+            <button class="tab-link active" onclick="openTab(event, 'Tab1')"><i class="fas fa-user"></i></button>
+            <button class="tab-link" onclick="openTab(event, 'Tab2')"><i class="fas fa-trophy"></i></button>
+            <button class="tab-link" onclick="openTab(event, 'Tab3')"><i class="fas fa-address-book"></i></button>
 
-                const dx = clientX - this.startX;
-                const dy = clientY - this.startY;
+        </div>
 
-                this.element.style.left = `${this.element.offsetLeft + dx}px`;
-                this.element.style.top = `${this.element.offsetTop + dy}px`;
+        <div id="Tab1" class="tab-content" style="display: block;">
+            <div class="personal-data">
+                <div class="basic-info">
+                    <h3>Informasi Dasar</h3>
+                    <p class="profile-meta"><strong>Tanggal Lahir:</strong> ${student.tanggal_lahir}</p>
+                    <p class="profile-meta"><strong>Umur:</strong> ${age} tahun</p>
+                    <p class="profile-meta"><strong>Zodiak:</strong> ${zodiac}</p>
+                    <p class="profile-meta"><strong>Gender:</strong> ${student.gender}</p>
 
-                this.startX = clientX;
-                this.startY = clientY;
-            }
+                </div>
+            </div>
+        </div>
 
-            endDrag() {
-                this.isDragging = false;
-                this.element.style.transition = 'transform 0.2s';
+        <div id="Tab2" class="tab-content">
+            <div class="achievements">
+                <h3>Prestasi</h3>
+                <ul class="achievements-list">
+                    ${student.prestasi.map(p => `<li>${p.judul} (${p.tahun})</li>`).join('')}
+                </ul>
+            </div>
+            <div class="activities">
+                <h3>Kegiatan</h3>
+                <ul class="activities-list">
+                    ${student.kegiatan.map(k => `<li>${k}</li>`).join('')}
+                </ul>
+            </div>
 
-                document.removeEventListener('mousemove', this.drag.bind(this));
-                document.removeEventListener('touchmove', this.drag.bind(this));
-                document.removeEventListener('mouseup', this.endDrag.bind(this));
-                document.removeEventListener('touchend', this.endDrag.bind(this));
+        </div>
 
-                // Set random velocity after dragging
-                this.velocity.x = (Math.random() * 2 + 1) * (Math.random() < 0.5 ? 1 : -1);
-                this.velocity.y = (Math.random() * 2 + 1) * (Math.random() < 0.5 ? 1 : -1);
-            }
+        <div id="Tab3" class="tab-content">
+            <div class="contact-info">
+                <div class="card">
+                    <div class="card-name">Quote of the month</div>
+                    <div class="quote">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307" height="80"
+                            width="80">
+                            <path fill="currentColor"
+                                d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="body-text">${student.deskripsi}</div>
+                    <div class="author">- by Virgil <br> <span>(Latin poet)</span> <svg height="" width="18"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0H24V24H0z" fill="none"></path>
+                            <path
+                                d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <h3>Kontak</h3>
+                <p><strong>Nomor Telepon:</strong> ${student.nomor_telepon}</p>
+                <p><strong>Email:</strong> ${student.email}</p>
+            </div>
+            <div class="description">
+                <h3>Deskripsi</h3>
+                <p>${student.deskripsi}</p>
+            </div>
 
-            update() {
-                if (!this.isDragging) {
-                    let rect = this.element.getBoundingClientRect();
-                    let containerRect = this.container.getBoundingClientRect();
 
-                    // Apply friction
-                    this.velocity.x *= this.friction;
-                    this.velocity.y *= this.friction;
-
-                    // Apply gravity
-                    this.velocity.y += this.gravity;
-
-                    // Check for collision with container borders and reverse direction if necessary
-                    if (rect.right >= containerRect.right || rect.left <= containerRect.left) {
-                        this.velocity.x = -this.velocity.x;
-                    }
-                    if (rect.bottom >= containerRect.bottom) {
-                        this.velocity.y = -this.velocity.y * this.friction; // Reverse and apply friction
-                        this.element.style.top = `${containerRect.height - rect.height}px`; // Prevent getting stuck
-                    }
-
-                    if (rect.top <= containerRect.top) {
-                        this.velocity.y = -this.velocity.y;
-                    }
-
-                    let left = parseFloat(this.element.style.left) + this.velocity.x;
-                    let top = parseFloat(this.element.style.top) + this.velocity.y;
-
-                    this.element.style.left = `${left}px`;
-                    this.element.style.top = `${top}px`;
-
-                    // Detect collision with other bubbles
-                    this.detectCollision();
-                }
-                requestAnimationFrame(this.update.bind(this));
-            }
-
-            detectCollision() {
-                const rect1 = this.element.getBoundingClientRect();
-                this.bubbles.forEach(bubble => {
-                    if (bubble.element !== this.element) {
-                        const rect2 = bubble.element.getBoundingClientRect();
-
-                        const dx = rect1.left + rect1.width / 2 - (rect2.left + rect2.width / 2);
-                        const dy = rect1.top + rect1.height / 2 - (rect2.top + rect2.height / 2);
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-                        const minDistance = rect1.width / 2 + rect2.width / 2;
-
-                        if (distance < minDistance) {
-                            const angle = Math.atan2(dy, dx);
-                            const tx = rect2.left + Math.cos(angle) * minDistance;
-                            const ty = rect2.top + Math.sin(angle) * minDistance;
-
-                            const ax = (tx - rect1.left) * 0.1; // Reduce the bounce effect
-                            const ay = (ty - rect1.top) * 0.1; // Reduce the bounce effect
-
-                            this.velocity.x -= ax;
-                            this.velocity.y -= ay;
-                            bubble.velocity.x += ax;
-                            bubble.velocity.y += ay;
-                        }
-                    }
-                });
-            }
-        }
-
-        const bubbles = Array.from(document.querySelectorAll('.bubble')).map(bubbleElement => new Bubble(bubbleElement, []));
-        bubbles.forEach(bubble => bubble.bubbles = bubbles);
-    </script>
-</body>
-</html>
+            <div class="friends">
+                <h3>Teman</h3>
+                <div class="friends-list">
+                    ${renderFriends(data.students, student.teman)}
+                </div>
+            </div>
+        </div>
+    </div>
