@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Menampilkan informasi siswa utama
                 studentDetails.innerHTML = `
-            <div class="student-profile">
+<div class="student-profile">
     <div class="prof-grad">
         <div class="header-detail-prof">
             <button class="header-button" onclick="window.history.back()"><i class="fas fa-arrow-left"></i></button>
@@ -21,45 +21,30 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="header-button"><i class="fas fa-share"></i></button>
         </div>
     </div>
-
+    <div class="profile-image">
+        <img src="${student.foto}" alt="${student.nama}">
+    </div>
+        <div class="ttd">
+        <p>${age} ${zodiac}</p>
+    </div>
     <div class="profile-header">
-        <img src="${student.foto}" alt="${student.nama}" class="profile-image">
+
         <div class="prof-student">
-            <h2>${student.nama}</h2>
-            <p class="profile-meta"><strong></strong> ${student.kelas} ${student.jurusan}</p>
+            <h1>${student.nama}</h1>
+
         </div>
     </div>
     <div class="prof-agez">
         <p>${age} ${zodiac}</p>
+        <p class="profile-meta"><strong></strong> ${student.kelas} ${student.jurusan}</p>
     </div>
 
 
     <div class="extra">
 
         <p class="profile-bio">${student.quote}</p>
-        <div class="row-middle">
-            <span class="profile-location">
-                <i class="fas fa-map-marker-alt"></i>
-                ${student.alamat.jalan}, ${student.alamat.kota}, ${student.alamat.provinsi}, ${student.alamat.kode_pos}
-            </span>
-            <span class="profile-website">
-                <i class="fas fa-link"></i>
-                <a href="#">https://www.instagram.com/janedoe_</a>
-            </span>
-            <div class="li">
-                <ul>
-                    <li><b>5</b> Test</li>
-                    <li><b>10</b> Test2</li>
-                    <li><b>8</b> Test3</li>
-                </ul>
-            </div>
-            
-            <div class="title-section">
-            <h1>Extra</h1>
-        </div>        
-            <div class="extra-icons">
-                ${renderExtraIcons(student.extra)}
-            </div>
+
+        
             <div class="row-bottom" style="display: none;">
                 <span class="followers-count">
                     Followers
@@ -75,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="count-meta">512</span>
                 </span>
             </div>
-            <div class="button-container">
+            <div class="button-container" style="display: none;">
                 <button class="button-prof follow-button">Follow</button>
                 <button class="button-prof share-button">Bagikan</button>
             </div>
@@ -95,12 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="profile-meta"><strong>Umur:</strong> ${age} tahun</p>
                     <p class="profile-meta"><strong>Zodiak:</strong> ${zodiac}</p>
                     <p class="profile-meta"><strong>Gender:</strong> ${student.gender}</p>
- <div class="friends">
-                <h3>Teman</h3>
-                <div class="friends-list">
-                    ${renderFriends(data.students, student.teman)}
-                </div>
-            </div>
+                    <div class="friends">
+                        <h3>Teman</h3>
+                        <div class="friends-list">
+                            ${renderFriends(data.students, student.teman)}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,7 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${student.kegiatan.map(k => `<li>${k}</li>`).join('')}
                 </ul>
             </div>
-
+<div class="title-section">
+            <h3>Extra</h3>
+            <div class="extra-icons">
+                ${renderExtraIcons(student.extra)}
+            </div>
         </div>
 
         <div id="Tab3" class="tab-content">
@@ -153,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
 
-            
+
         </div>
     </div>
                 `;

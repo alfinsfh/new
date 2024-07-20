@@ -1,6 +1,6 @@
 /* General Styles */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+SAS:wght@100..400&display=swap');
 body {
     font-family: "Poppins", sans-serif;
     background-color: var(--color);
@@ -16,6 +16,8 @@ body {
     --color4: #ccc;
     --tab-padding: 14px 16px;
     --tab-margin: 0 5px;
+
+    
 }
 
 
@@ -123,6 +125,7 @@ input:hover {
 
 .container-index {
     margin: 24px;
+    
 }
 
 /* Student List */
@@ -274,12 +277,21 @@ input:hover {
 
 
 .profile-image {
-    margin-right: 20px;
-    width: 150px;
-    /* Atur ukuran sesuai kebutuhan */
-    height: auto;
-    /* Atur tinggi otomatis berdasarkan lebar */
+justify-content: center;
+text-align: center;
 }
+
+.profile-image img {
+    width: max-content;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    filter: saturate(0);
+    border-radius: 50%;
+    border: 4px solid #161618;
+    padding: 8px;
+}
+
 
 
 
@@ -290,31 +302,29 @@ input:hover {
     line-height: 24px;
 }
 
-.prof-student p {
-    background-color: var(--color1);
-    display: inline-block;
-    padding: 3px 20px;
-    border-radius: 8px;
-    text-align: left;
+.prof-student h1 {
+    font-size: 24px;
     color: #ffffff;
+    margin-top: 24px;
 }
 
 .profile-met {
     margin: 5px 0;
 }
 
+.prof-agez {
+    margin-left: 24px;
+    text-align: center;
+}
+
 .prof-agez p {
-    margin-bottom: -23rem;
     background-color: white;
     color: var(--color);
     display: inline-block;
     padding: 5px 20px;
     border: 2px solid var(--color);
     border-radius: 50px;
-    position: absolute;
     z-index: 2;
-    margin-left: 35px;
-    margin-top: -50px;
     font-size: 10px;
 
 }
@@ -328,14 +338,6 @@ input:hover {
     max-width: 460px;
     z-index: 1;
     background-color: rgb(0, 0, 0);
-    background-image:
-        radial-gradient(at 40% 20%, hsla(28, 100%, 74%, 1) 0px, transparent 50%),
-        radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 1) 0px, transparent 50%),
-        radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 1) 0px, transparent 50%),
-        radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 1) 0px, transparent 50%),
-        radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 1) 0px, transparent 50%),
-        radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 1) 0px, transparent 50%),
-        radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 1) 0px, transparent 50%);
 }
 
 .prof-grad::before {
@@ -360,15 +362,9 @@ input:hover {
     min-height: 200vh;
 }
 
+
 .profile-header {
-    align-items: center;
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
-    padding: 24px;
-    position: relative;
-    top: -rem;
-    z-index: 2;
+
 }
 
 .profile-header img {
@@ -429,7 +425,7 @@ ul.activities li {
 .extra-icons {
     display: flex;
     align-items: center;
-
+    margin-bottom: 24px;
 }
 
 .extra-icons img {
@@ -451,6 +447,28 @@ ul.activities li {
     margin-right: 10px;
 }
 
+.ttd {
+    text-align: center;
+    position: relative;
+    top: -54px;
+    margin-bottom: -48px;
+
+}
+
+.ttd p{
+    text-align: center;
+    font-family: "Playwrite DE SAS", cursive;
+    color: #000000;
+    font-size: 20px;
+    z-index: 2;
+    background-color: #ffffff;
+    display: inline-block;
+    padding: 0px 14px;
+    rotate: -8deg;
+
+}
+
+
 
 .tabs {
     overflow: hidden;
@@ -459,7 +477,10 @@ ul.activities li {
     justify-content: center;
     border: 1px solid var(--color3);
     border-radius: 50px;
+    margin: 24px;
 }
+
+
 
 .tab-link {
     width: 100%;
